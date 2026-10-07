@@ -1,0 +1,26 @@
+# IntelliJ / IDE
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Java
+*.class
+out/
+target/
+build/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Logs
+*.log
