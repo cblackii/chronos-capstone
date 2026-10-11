@@ -1,0 +1,40 @@
+name: CHRONOS TNA CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build and Test TNA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Configure Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Compile Temporal Navigation Engine
+        run: |
+          javac \
+            src/temporal-engine/TemporalNavigationEngine.java \
+            tests/TemporalNavigationEngineTest.java
+
+      - name: Run CHRONOS automated tests
+        run: |
+          java \
+            -cp src/temporal-engine:tests \
+            TemporalNavigationEngineTest
