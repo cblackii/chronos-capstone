@@ -34,3 +34,15 @@ Mission Asset
 No major CHRONOS security control should exist without a documented protection purpose.
 
 Likewise, no critical mission risk should remain without a planned verification method.
+
+## TNA v0.1 Verification Traceability
+
+| Requirement / Risk | Test ID | Verification |
+|---|---|---|
+| Mission execution requires authorized operating conditions | TNA-TC-001 | Valid mission is authorized |
+| Unsafe velocity must prevent mission execution | TNA-TC-002 | Velocity below 88 MPH is denied |
+| Insufficient flux energy must prevent mission execution | TNA-TC-003 | Energy below 1.21 GW is denied |
+| Unstable temporal conditions must prevent mission execution | TNA-TC-004 | Stability below 75 is denied |
+| Invalid temporal transition must not execute | TNA-TC-005 | Same origin and destination is denied |
+
+These tests provide initial objective evidence that CHRONOS mission authorization logic enforces defined operational constraints.
