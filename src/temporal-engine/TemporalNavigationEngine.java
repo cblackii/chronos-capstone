@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 
 public class TemporalNavigationEngine {
 
-    private static final double REQUIRED_VELOCITY_MPH = 88.0;
+    private static final double REQUIRED_VELOCITY_MPH = 90.0;
     private static final double BASE_FLUX_ENERGY_GW = 1.21;
     private static final double MIN_STABILITY_SCORE = 75.0;
 
