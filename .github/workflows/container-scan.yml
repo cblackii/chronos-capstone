@@ -1,0 +1,38 @@
+name: CHRONOS Container Scan
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  container-scan:
+    name: Container Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Build CHRONOS container image
+        run: |
+          docker build \
+            --tag chronos-tna:${{ github.sha }} \
+            .
+
+      - name: Scan CHRONOS container image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: chronos-tna:${{ github.sha }}
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          vuln-type: os,library
+          exit-code: '1'
